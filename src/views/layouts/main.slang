@@ -22,4 +22,3 @@ html
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
     script src="https://static.opentok.com/v2.12.0-beta/js/opentok.min.js"
     script src="/javascripts/main.js"
-

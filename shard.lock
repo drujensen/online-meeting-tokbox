@@ -1,5 +1,9 @@
 version: 1.0
 shards:
+  crest:
+    github: mamantoha/crest
+    commit: 393188f0627b09d3781abbd79fc245b4030ecf13
+
   db:
     github: crystal-lang/crystal-db
     version: 0.4.2
@@ -7,6 +11,10 @@ shards:
   expect:
     github: dukex/expect.cr
     commit: 17c31a0f42815cd914a630852bb2ee0da6a39dc0
+
+  jwt:
+    github: greyblake/crystal-jwt
+    version: 0.2.2
 
   kemalyst:
     github: kemalyst/kemalyst

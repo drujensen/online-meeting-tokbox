@@ -2,7 +2,7 @@ name: online-meeting
 version: 0.1.0
 
 authors:
-  - your_name <your_email>
+  - Dru Jensen <drujensen@gmail.com>
 
 license: MIT
 
@@ -19,18 +19,15 @@ dependencies:
     github: kemalyst/kemalyst-spec
     version: ~> 0.1.0
     
-
   mysql:
     github: crystal-lang/crystal-mysql
 
+  crest:
+    github: mamantoha/crest
 
-#  mysql:
-#    github: crystal-lang/crystal-mysql
-#  pg:
-#    github: will/crystal-pg
-#  sqlite3:
-#    github: crystal-lang/crystal-sqlite3
-
+  jwt:
+    github: greyblake/crystal-jwt
+    
 development_dependencies:
   expect:
     github: dukex/expect.cr

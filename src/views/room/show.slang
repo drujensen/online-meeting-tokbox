@@ -1,3 +1,5 @@
+javascript:
+  window.onload = function () {  initialize(); }
 div.container
 div.row
   div.col

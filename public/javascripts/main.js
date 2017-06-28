@@ -1,8 +1,3 @@
-// replace these values with those generated in your TokBox Account
-var apiKey = "45902462";
-var sessionId = "2_MX40NTkwMjQ2Mn5-MTQ5ODYzMDg2OTUzN35FcXA1K0xSMWF1SFpwKzRCVmMzR2YyYnJ-fg";
-var token = "T1==cGFydG5lcl9pZD00NTkwMjQ2MiZzaWc9YzAzYWM2ODlhODQ4YWMwM2U0ODdmMWU3NTg2NjQ1YjMyYTEyNmFlODpzZXNzaW9uX2lkPTJfTVg0ME5Ua3dNalEyTW41LU1UUTVPRFl6TURnMk9UVXpOMzVGY1hBMUsweFNNV0YxU0Zwd0t6UkNWbU16UjJZeVluSi1mZyZjcmVhdGVfdGltZT0xNDk4NjMwODg0Jm5vbmNlPTAuMTU1MDAyMzk5MzA2MzUzMTgmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTUwMTIyMjg4Mw==";
-
 // Handling all of our errors here by alerting them
 function handleError(error) {
   if (error) {
@@ -10,10 +5,8 @@ function handleError(error) {
   }
 }
 
-// (optional) add server code here
-initializeSession();
 
-function initializeSession() {
+function startSession(apiKey, sessionId, token) {
   var session = OT.initSession(apiKey, sessionId);
 
   // Subscribe to a newly created stream
@@ -40,5 +33,45 @@ function initializeSession() {
     } else {
       session.publish(publisher, handleError);
     }
+  });
+}
+
+function authenticate(token) {
+  fetch('/opentok/authenticate)
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      response.json().then(function(data) {
+        startSession(data[0].project_id, data[0].session_id, token)
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+}
+
+function initialize() {
+  fetch('/opentok/token')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      response.json().then(function(data) {
+        authenticate(data.token)
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
   });
 }
