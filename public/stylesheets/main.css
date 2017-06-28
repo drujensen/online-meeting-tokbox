@@ -71,3 +71,11 @@ h6, .h6 {
 .main {
   padding-top: 20px;
 }
+
+#publisher {
+  height: 600px;
+}
+
+#subscriber {
+  height: 600px;
+}

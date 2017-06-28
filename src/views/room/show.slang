@@ -4,6 +4,7 @@ div.row
     h2 = room.name.not_nil!.capitalize
 div.row
   div.col
-    video.local autoplay="true"
+    div#publisher
   div.col
-    video.remote autoplay="true"
+    div#subscriber
+

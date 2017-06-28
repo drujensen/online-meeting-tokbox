@@ -1,6 +1,16 @@
 version: '2'
 
 services:
+  nginx:
+    build: nginx/.
+    image: ngnix
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - './public:/public'
+    depends_on:
+      - 'web'
   web:
     build: .
     image: online-meeting
