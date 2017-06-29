@@ -36,7 +36,7 @@ function startSession(apiKey, sessionId, token) {
   });
 }
 
-function initialize() {
+function startSharing() {
   var room = document.getElementById('room');
   startSession(room.dataset.apiKey, room.dataset.sessionId, room.dataset.token);
 }

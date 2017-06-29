@@ -1,5 +1,5 @@
 javascript:
-  window.onload = function () {  initialize(); }
+  window.onload = function () {  startSharing(); }
 div.row
   div.col
     h2 = room.name.not_nil!.capitalize
