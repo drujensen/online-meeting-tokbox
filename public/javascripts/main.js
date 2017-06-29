@@ -37,21 +37,6 @@ function startSession(apiKey, sessionId, token) {
 }
 
 function initialize() {
-  fetch('/opentok/authenticate')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
-
-      response.json().then(function(data) {
-        startSession(data.project_id, data.session_id, data.token)
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
+  var room = document.getElementById('room');
+  startSession(room.dataset.apiKey, room.dataset.sessionId, room.dataset.token);
 }

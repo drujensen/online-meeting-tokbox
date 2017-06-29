@@ -25,7 +25,3 @@ get "/", HomeController, :index
 
 # resource Demo
 resources Room
-
-# opentok api
-get "/opentok/token", OpentokController, :token
-get "/opentok/authenticate", OpentokController, :authenticate
