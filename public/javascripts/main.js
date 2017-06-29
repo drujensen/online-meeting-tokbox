@@ -36,28 +36,8 @@ function startSession(apiKey, sessionId, token) {
   });
 }
 
-function authenticate(token) {
-  fetch('/opentok/authenticate)
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
-
-      response.json().then(function(data) {
-        startSession(data[0].project_id, data[0].session_id, token)
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
-}
-
 function initialize() {
-  fetch('/opentok/token')
+  fetch('/opentok/authenticate')
   .then(
     function(response) {
       if (response.status !== 200) {
@@ -67,7 +47,7 @@ function initialize() {
       }
 
       response.json().then(function(data) {
-        authenticate(data.token)
+        startSession(data.project_id, data.session_id, data.token)
       });
     }
   )
