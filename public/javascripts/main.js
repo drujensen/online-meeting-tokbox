@@ -15,10 +15,10 @@ function startSession(apiKey, sessionId, token) {
 
   // Subscribe to a newly created stream
   session.on('streamCreated', function(event) {
-    session.subscribe(event.stream, 'subscriber', {
+    session.subscribe(event.stream, 'video-container', {
       insertMode: 'append',
-      width: '100%',
-      height: '100%'
+      width: '50%',
+      height: '50%'
     }, handleError);
   });
 
@@ -35,10 +35,10 @@ function startSession(apiKey, sessionId, token) {
 
 function videoshare(session) {
   // Create a publisher
-  var publisher = OT.initPublisher('publisher', {
+  var publisher = OT.initPublisher('video-container', {
     insertMode: 'append',
-    width: '100%',
-    height: '100%'
+    width: '50%',
+    height: '50%'
   }, handleError);
 
   session.publish(publisher, handleError);
@@ -53,11 +53,11 @@ function screenshare(session) {
       alert('Please install the screen sharing extension and load your app over https.');
     } else {
       // Screen sharing is available. Publish the screen.
-      var publisher = OT.initPublisher('publisher', {
+      var publisher = OT.initPublisher('video-container', {
         videoSource: 'screen',
         insertMode: 'append',
-        width: '100%',
-        height: '100%'
+        width: '50%',
+        height: '50%'
       });
       session.publish(publisher, handleError)
     }

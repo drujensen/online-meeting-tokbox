@@ -72,10 +72,6 @@ h6, .h6 {
   padding-top: 20px;
 }
 
-#publisher {
-  height: 600px;
-}
-
-#subscriber {
+#video-container {
   height: 600px;
 }
