@@ -28,12 +28,12 @@ function startSession(apiKey, sessionId, token) {
     if (error) {
       handleError(error);
     } else {
-      videoshare();
+      videoshare(session);
     }
   });
 }
 
-function videoshare() {
+function videoshare(session) {
   // Create a publisher
   var publisher = OT.initPublisher('publisher', {
     insertMode: 'append',
@@ -45,7 +45,7 @@ function videoshare() {
 }
 
 
-function screenshare() {
+function screenshare(session) {
   OT.checkScreenSharingCapability(function(response) {
     if (!response.supported || response.extensionRegistered === false) {
       alert('This browser does not support screen sharing.');
