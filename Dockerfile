@@ -1,3 +1,7 @@
+# if your building this on a small t2 instance, you may need a swapfile to build kgen
+# sudo dd if=/dev/zero of=/swapfile bs=2k count=512k && sudo mkswap /swapfile && sudo chmod 600 /swapfile && sudo swapon /swapfile
+# sudo sudo swapoff /swapfile && sudo rm /swapfile
+
 FROM drujensen/crystal:0.22.0-1
 
 ENV KGEN_VERSION 0.7.3
@@ -12,4 +16,6 @@ ADD . /app/user
 
 RUN crystal deps
 
-CMD ["crystal", "spec"]
+RUN crystal build --release src/online-meeting.cr
+
+CMD ["online-meeting"]
