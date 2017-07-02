@@ -1,4 +1,5 @@
 require "../models/room"
+require "../lib/opentok"
 
 class RoomController < Kemalyst::Controller
   def index
@@ -9,6 +10,11 @@ class RoomController < Kemalyst::Controller
   def show
     if room = Room.find params["id"]
       session_id = room.session_id
+
+      opentok = OpenTok::OpenTok.new
+      api_key = opentok.api_key
+      token = opentok.generate_token(room.session_id.not_nil!)
+
       html render("room/show.slang", "main.slang")
     else
       flash["warning"] = "Room with ID #{params["id"]} Not Found"
@@ -23,6 +29,11 @@ class RoomController < Kemalyst::Controller
 
   def create
     room = Room.new(params.to_h.select(["name"]))
+    
+    opentok = OpenTok::OpenTok.new
+    result = opentok.create_session
+    room.session_id = result["session_id"].to_s
+
     if room.valid? && room.save
       flash["success"] = "Created Room successfully."
       redirect "/rooms/#{room.id}"

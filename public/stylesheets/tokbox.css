@@ -1,0 +1,7 @@
+#video-container {
+  height: 600px;
+}
+.OT_fit-mode-cover {
+  float: left;
+  border: 1px solid black !important;  
+}

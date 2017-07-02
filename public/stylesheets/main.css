@@ -72,10 +72,16 @@ h6, .h6 {
   padding-top: 20px;
 }
 
-#video-container {
+.video-container {
   height: 600px;
 }
-.OT_fit-mode-cover {
+
+.publisher {
+  float: left;
+  border: 1px solid black !important;  
+}
+
+.subscriber {
   float: left;
   border: 1px solid black !important;  
 }
